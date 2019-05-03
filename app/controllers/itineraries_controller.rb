@@ -1,14 +1,16 @@
 class ItinerariesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
   end
 
   def new
-    render template: 'itinerary/form'
+    render template: 'itineraries/form'
   end
 
+  before_action :authenticate_user!
   def create
-    @itinerary = Itinerary.new(itinerary_params)
-
+    @itinerary = current_user.itineraries.create(:title => 'My New Itinerary!')
     @itinerary.save!
     redirect_to itineraries_path, warning: 'New itinerary created!'
   rescue StandardError => e

@@ -7,8 +7,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    binding.pry
 
+    @event = Event.new(event_params)
     @event.save!
     redirect_to itineraries_path, warning: 'New event created!'
   rescue StandardError => e
@@ -50,8 +51,8 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    p = params.require(:event).permit(:itinerary_id, :title, :start_time, :end_time, :host, :map_url, :description, :price_per_person, :deadline, :refundable)
-    p['host'] = User.find_by!(account: p['host'])
+    p = params.except("utf8","authenticity_token").require(:event).permit(:itinerary_id, :title, :start_time, :end_time, :host, :map_url, :description, :price_per_person, :deadline, :refundable, :commit)
+    p['host'] = User.find_by!(email: p['host'])
     p
   end
 end

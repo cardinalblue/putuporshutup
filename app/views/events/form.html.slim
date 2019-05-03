@@ -1,6 +1,6 @@
 .row
   .col-12
-    = form_with model: @event do |f|
+    = form_with model: @event, url: events_path(@post) do |f|
       .form-group.col-12
         = f.label :title
         = f.text_field :title, required: true, class: 'form-control'
@@ -40,4 +40,4 @@
 
       .form-group.col-3
         = f.hidden_field :itinerary_id, value: params[:itinerary_id]
-        = f.submit 'Hooray!', class: 'btn btn-warning', role: 'button'
+        = f.submit 'Hooray!', class: 'btn', role: 'button'
