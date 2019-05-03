@@ -1,18 +1,29 @@
-h1 Pool Party!
+.row
+  .col-md-4.mx-auto
+    h1 Pool Party!
 
-p Welcome back
-= current_user.email
+.row
+  .col-md-4.mx-auto
+    p Welcome back
+    = current_user.email
 
-- unless current_user.itineraries.empty?
-  P Your events
-  ul
-    - current_user.itineraries.each do |item|
-      li
-        = link_to item.title, "/itineraries/#{item.id}/"
-- else
-  p
-    | No events found.  Please add some!
-      Thank you!
+    - unless current_user.itineraries.empty?
+      P Your events
+      table.table
+        thead
+          tr
+            th
+            th
+        tbody
+          - current_user.itineraries.each do |item|
+            tr
+              td = link_to item.title, "/itineraries/#{item.id}/"
+              td = link_to 'edit', "/itineraries/#{item.id}/edit", class: 'btn button'
 
-= link_to 'Create', '/itineraries/new', class: 'btn btn-green button'
+    - else
+      p
+        | No events found.  Please add some!
+          Thank you!
+
+    = link_to 'Create', '/itineraries/new', class: 'btn btn-green button'
 

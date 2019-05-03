@@ -11,9 +11,7 @@
     p.event-meta
       = "#{e.attendees.count} people going."
 
-    span
       = button_to 'Going!', event_attendee_respond_path(e, status: 1), class: 'btn btn-default'
-    span
       = button_to 'Cannot', event_attendee_respond_path(e, status: 2), class: 'btn btn-default'
 
   hr
