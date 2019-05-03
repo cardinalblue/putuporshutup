@@ -1,43 +1,9 @@
 .row
-  .col-12
-    = form_with model: @itinerary do |f|
+  .col-6
+    = form_with model: @itinerary, url: itineraries_path(@post) do |f|
       .form-group.col-12
         = f.label :title
         = f.text_field :title, required: true, class: 'form-control'
-      .form-group.col-12
-        = f.label 'from', class: 'mr-2'
-        = f.datetime_select :start_time, start_year: 2019, default: Time.now, class: 'form-control'
-      .form-group.col-12
-        = f.label 'to', class: 'mr-2'
-        = f.datetime_select :end_time, start_year: 2019, default: Time.now, class: 'form-control'
-      .form-group.col-12
-        = f.label :host
-        = f.text_field :host, placeholder: 'email of the person responsibile', class: 'form-control'
-      .form-group.col-12
-        = f.label :map_url
-        = f.text_field :map_url, class: 'form-control'
-      .form-group.col-12
-        = f.label 'notes'
-        = f.text_area :description, class: 'form-control'
-
-      hr
-
-      .form-group.col-12
-        = f.label :price_per_person
-        = f.number_field :price_per_person, step: '1', class: 'form-control'
-      .form-group.col-12
-        = f.label 'payment deadline'
-        br
-        = f.datetime_select :deadline, start_year: 2019, default: Time.now, class: 'form-control'
-
-      .form-group.col-12
-        .form-check.form-check-inline
-          = f.radio_button :refundable, true, class: 'form-check-input'
-          = f.label :refundable, class: 'form-check-label'
-        .form-check.form-check-inline
-          = f.radio_button :refundable, false, class: 'form-check-input'
-          = f.label 'non-refundable', class: 'form-check-label'
 
       .form-group.col-3
-        = f.hidden_field :itinerary_id, value: params[:itinerary_id]
-        = f.submit 'Hooray!', class: 'btn btn-warning', role: 'button'
+        = f.submit 'Create', class: 'btn primary', role: 'button'

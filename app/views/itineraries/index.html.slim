@@ -1,2 +1,18 @@
-h1 Itineraries#index
-p Find me in app/views/itineraries/index.html.slim
+h1 Pool Party!
+
+p Welcome back
+= current_user.email
+
+- unless current_user.itineraries.empty?
+  P Your events
+  ul
+    - current_user.itineraries.each do |item|
+      li
+        = item.title
+- else
+  p
+    | No events found.  Please add some!
+      Thank you!
+
+= link_to 'Create', '/itineraries/new', class: 'btn btn-green button'
+

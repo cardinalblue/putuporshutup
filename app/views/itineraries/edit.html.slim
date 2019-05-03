@@ -1,2 +1,17 @@
-h1 Itineraries#edit
-p Find me in app/views/itineraries/edit.html.slim
+- @itinerary = Itinerary.where("id = ?", params[:id])[0]
+
+h1 = "Edit #{@itinerary[:title]}"
+
+- unless @itinerary.events.empty?
+  P This events activities: 
+  ul
+    - @itinerary.events.each do |item|
+      li
+        = item.title
+- else
+  p
+    | No events found.  Please add some!
+      Thank you!
+
+= button_to 'Add Event', events_path(@Event, itinerary_id: @itinerary[:id]), class: "btn button"
+
