@@ -15,4 +15,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    = yield
+    main
+      .container
+        = flash_messages
+        = yield
