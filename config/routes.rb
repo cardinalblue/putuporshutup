@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'itineraries#index'
+  devise_for :users
 
   resources :itineraries
   resources :events do

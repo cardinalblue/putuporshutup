@@ -22,6 +22,8 @@ class ItinerariesController < ApplicationController
   end
 
   def show
+    @itinerary = Itinerary.find(params[:id])
+    @events = @itinerary.events
   end
 
   def destroy

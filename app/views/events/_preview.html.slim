@@ -1,7 +1,7 @@
 - events.each do |e|
   .events-preview
     h3 = link_to e.title, event_path(e)
-    h4 = "$#{event.price_per_person} per person"
+    h4 = "$#{e.price_per_person} per person"
     p.event-meta
       = link_to 'map', e.map_url
     p.event-meta
