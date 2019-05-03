@@ -10,7 +10,7 @@ class ItinerariesController < ApplicationController
 
   before_action :authenticate_user!
   def create
-    @itinerary = current_user.itineraries.create(:title => 'My New Itinerary!')
+    @itinerary = current_user.itineraries.create(:title => params[:title])
     @itinerary.save!
     redirect_to itineraries_path, warning: 'New itinerary created!'
   rescue StandardError => e

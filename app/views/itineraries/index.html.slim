@@ -8,7 +8,7 @@ p Welcome back
   ul
     - current_user.itineraries.each do |item|
       li
-        = item.title
+        = link_to item.title, "itineraries/#{item.id}/edit"
 - else
   p
     | No events found.  Please add some!
