@@ -37,6 +37,9 @@ gem 'jbuilder', '~> 2.5'
 # Template Engine
 gem 'slim-rails'
 
+# User authentication
+gem 'devise'
+
 group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
