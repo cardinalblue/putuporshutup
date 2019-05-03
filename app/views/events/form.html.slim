@@ -39,4 +39,5 @@
           = f.label 'non-refundable', class: 'form-check-label'
 
       .form-group.col-3
+        = f.hidden_field :itinerary_id, value: params[:itinerary_id]
         = f.submit 'Hooray!', class: 'btn btn-warning', role: 'button'
