@@ -13,5 +13,5 @@ h1 = "Edit #{@itinerary[:title]}"
     | No events found.  Please add some!
       Thank you!
 
-= button_to 'Add Event', events_path(@Event, itinerary_id: @itinerary[:id]), class: "btn button"
+= link_to 'Add Event', "/events/new?itinerary_id=#{@itinerary[:id]}", class: "btn button"
 
