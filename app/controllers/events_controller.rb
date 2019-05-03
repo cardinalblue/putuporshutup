@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :build_event, only: ['new', 'edit']
+  before_action :build_event, only: ['new', 'edit', 'attendee_respond']
 
   def new
     render template: 'events/form'
@@ -33,6 +33,15 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     redirect_to itineraries_path, warning: 'Event deleted.'
+  end
+
+  def attendee_respond
+    # FIX
+    attendee = User.first
+    reservation = Reservation.find_by(event_id: @event.id, attendee_id: attendee.id)
+    reservation.update!(status: params[:status])
+    # TODO: If response is going, should transfer to payment
+    redirect_to itinerary_path(@event.itinerary_id), success: 'Response received!'
   end
 
   private

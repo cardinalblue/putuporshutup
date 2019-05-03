@@ -1,2 +1,16 @@
-h1 Itineraries#show
-p Find me in app/views/itineraries/show.html.slim
+.row
+  .col-12
+    h2 = @itinerary.title
+    p 5/31/2019
+    p 3pm - 5pm
+    p Austin, Texas
+    p some more details
+
+.row
+  .col-12
+    .card
+      .card-header.text-white.bg-primary
+        h5 style='margin: 0;' EVENTS
+      .card-body
+        = render 'events/preview', events: @events
+
