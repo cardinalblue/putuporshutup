@@ -2,13 +2,12 @@ class EventsController < ApplicationController
   before_action :build_event, only: ['new', 'edit', 'attendee_respond']
 
   def new
-    render template: 'events/form'
+    itinerary_id = params['itinerary_id']
+    render template: 'events/form', locals: { name: itinerary_id }
   end
 
   def create
     @event = Event.new(event_params)
-    # FIX
-    @event.itinerary_id = 1
 
     @event.save!
     redirect_to itineraries_path, warning: 'New event created!'
@@ -51,7 +50,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    p = params.require(:event).permit(:title, :start_time, :end_time, :host, :map_url, :description, :price_per_person, :deadline, :refundable)
+    p = params.require(:event).permit(:itinerary_id, :title, :start_time, :end_time, :host, :map_url, :description, :price_per_person, :deadline, :refundable)
     p['host'] = User.find_by!(account: p['host'])
     p
   end
