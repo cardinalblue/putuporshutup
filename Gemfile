@@ -40,6 +40,10 @@ gem 'slim-rails'
 # User authentication
 gem 'devise'
 
+# material
+gem 'material-sass', '4.1.1'
+
+
 group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
