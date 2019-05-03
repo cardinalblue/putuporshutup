@@ -15,6 +15,17 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      div.collapse.navbar-collapse
+        ul.navbar-bav.mr-auto
+          li.nav-link
+            = link_to "sample app", 'root_path', id: "logo", class: 'nav-link'
+          li.nav-link
+            = link_to "Home",   'root_path', class: 'nav-link'
+          li.nav-link
+            = link_to "Help",   'help_path', class: 'nav-link'
+          li.nav-link
+            = link_to "Log in", 'login_path', class: 'nav-link'
     main
       .container
         = flash_messages
